@@ -1,6 +1,6 @@
 # Hermes Assistant
 
-Hermes Assistant is a Home Assistant conversation agent. It forwards the text it receives from Assist to your Hermes Agent gateway and returns the gateway's reply. Each request is a single turn with a 90-second limit and a 5-second connection timeout.
+Hermes Assistant is a Home Assistant conversation agent. It forwards the text it receives from Assist to your Hermes Agent gateway and returns the gateway's reply.
 
 ## Install in Home Assistant
 
@@ -12,6 +12,14 @@ For a manual install, copy `custom_components/hermes_text` into the `custom_comp
 
 ## Try it
 
-Open **Developer Tools → Actions → Process conversation**, select **Hermes Assistant** as the agent, and enter `Hi` or any other text. The result contains the Hermes reply under `response.speech.plain.speech`. [Home Assistant action reference](https://www.home-assistant.io/actions/conversation.process/#try-it-yourself)
+Open **Settings → Tools → Actions → Process conversation**, select **Hermes Assistant** as the agent, and enter `Hi` or any other text. The result contains the Hermes reply under `response.speech.plain.speech`. [Home Assistant action reference](https://www.home-assistant.io/actions/conversation.process/#try-it-yourself)
 
 Select **Hermes Assistant** as the conversation agent in an Assist pipeline to use it with typed Assist messages or voice transcripts.
+
+## Follow-ups and slow replies
+
+Hermes stores replies on the gateway under a separate conversation for each active Home Assistant chat. Ask follow-up questions in the same chat, or type or say `start over` to begin a fresh Hermes conversation.
+
+After 15 seconds, Assist says Hermes is still working. The request can run for up to four minutes. The finished reply goes to the originating voice satellite when it supports announcements, or to Home Assistant's shared notifications panel. Delayed replies in that panel are visible to users of the Home Assistant instance.
+
+The `conversation.process` action waits for the final reply for up to 90 seconds. Pass the returned `conversation_id` on subsequent calls to continue the same chat. Both paths allow up to five seconds to connect to the gateway.
