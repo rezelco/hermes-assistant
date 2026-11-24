@@ -2,7 +2,7 @@
 
 from typing import Literal
 
-from aiohttp import ClientError, ClientTimeout
+from aiohttp import ClientError, ClientTimeout, ConnectionTimeoutError
 
 from homeassistant.components import conversation
 from homeassistant.config_entries import ConfigEntry
@@ -12,7 +12,7 @@ from homeassistant.helpers import intent
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
-REPLY_TIMEOUT = ClientTimeout(total=15)
+REPLY_TIMEOUT = ClientTimeout(total=90, connect=5)
 
 
 async def async_setup_entry(
@@ -47,6 +47,8 @@ class HermesTextAgent(conversation.ConversationEntity):
         response = intent.IntentResponse(language=user_input.language)
         try:
             reply = await self._async_get_reply(user_input.text)
+        except ConnectionTimeoutError:
+            error = "Home Assistant timed out connecting to Hermes."
         except TimeoutError:
             error = "Hermes took too long to reply."
         except ClientError:

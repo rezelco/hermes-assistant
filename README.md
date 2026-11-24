@@ -1,6 +1,6 @@
 # Hermes Assistant
 
-Hermes Assistant is a Home Assistant conversation agent. It forwards the text it receives from Assist to your Hermes Agent gateway and returns the gateway's reply. Each request is a single turn with a 15-second timeout.
+Hermes Assistant is a Home Assistant conversation agent. It forwards the text it receives from Assist to your Hermes Agent gateway and returns the gateway's reply. Each request is a single turn with a 90-second limit and a 5-second connection timeout.
 
 ## Install in Home Assistant
 
