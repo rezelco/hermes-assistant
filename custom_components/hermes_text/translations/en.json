@@ -1,0 +1,25 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to Hermes Agent",
+        "data": {
+          "url": "Gateway URL",
+          "api_key": "API server key"
+        },
+        "data_description": {
+          "url": "The gateway address as seen from Home Assistant, for example http://hermes.local:8642.",
+          "api_key": "The API_SERVER_KEY configured on your Hermes gateway."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not connect to the Hermes API server.",
+      "invalid_auth": "Enter a valid Hermes API server key.",
+      "invalid_url": "Enter an HTTP or HTTPS gateway URL."
+    },
+    "abort": {
+      "already_configured": "This Hermes gateway is already configured."
+    }
+  }
+}
