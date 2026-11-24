@@ -1,12 +1,12 @@
 {
   "domain": "hermes_text",
-  "name": "Hermes Agent Text",
+  "name": "Hermes Assistant",
   "codeowners": ["@rezelco"],
   "config_flow": true,
   "dependencies": ["conversation"],
-  "documentation": "https://github.com/rezelco/hermes-agent-text#readme",
+  "documentation": "https://github.com/rezelco/hermes-assistant#readme",
   "integration_type": "service",
   "iot_class": "local_polling",
-  "issue_tracker": "https://github.com/rezelco/hermes-agent-text/issues",
-  "version": "0.1.0"
+  "issue_tracker": "https://github.com/rezelco/hermes-assistant/issues",
+  "version": "0.1.1"
 }

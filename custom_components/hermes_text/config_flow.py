@@ -68,7 +68,7 @@ class HermesTextConfigFlow(ConfigFlow, domain=DOMAIN):
 
             if not errors:
                 return self.async_create_entry(
-                    title="Hermes Agent Text",
+                    title="Hermes Assistant",
                     data={CONF_URL: base_url, CONF_API_KEY: api_key},
                 )
 

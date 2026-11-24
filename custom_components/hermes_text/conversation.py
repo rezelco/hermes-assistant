@@ -27,7 +27,7 @@ async def async_setup_entry(
 class HermesTextAgent(conversation.ConversationEntity):
     """Forward Assist text to the Hermes gateway."""
 
-    _attr_name = "Hermes Agent Text"
+    _attr_name = "Hermes Assistant"
 
     def __init__(self, entry: ConfigEntry) -> None:
         """Keep the connection settings for this agent."""
